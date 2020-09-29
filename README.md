@@ -12,7 +12,7 @@ can be changed in "Quant_example.m".
 
 The code requires Matlab's Deep Learning Toolbox.
 
-To rund the code, execture the main file "Quant_example.m".
+To rund the code, exectue the main file "Quant_example.m".
 
 This file will call the scripts "NN_training.m" and "train_net.me" for DNN training.
 
