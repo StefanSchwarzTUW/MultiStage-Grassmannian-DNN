@@ -39,7 +39,7 @@ file_name = [num2str(nTX) '_' num2str(nRX) '_' num2str(log2(CB_size)) '_' num2st
 % categories = num2cell(1:CB_size);
 if ~exist(file_name,'file')
     inn_p_store = zeros(NN,1);
-    for nn = 1:NN
+    parfor nn = 1:NN
         if ~mod(nn,100)
             nn
         end
@@ -48,6 +48,7 @@ if ~exist(file_name,'file')
         U = U*diag(exp(-1i*angle(U(1,:)))); % phase rotation to make the first row real-valued
         training_set(:,:,:,nn) = cat(3,real(U),imag(U));
 %         training_set(:,:,:,nn) = [abs(U).^2;angle(U)];
+        inn_p = zeros(CB_size,1);
         for cb_i = 1:CB_size
             inn_p(cb_i) = abs(trace(CB(:,:,cb_i)'*(U*U')*CB(:,:,cb_i)));  % one minus chordal distance
         end
